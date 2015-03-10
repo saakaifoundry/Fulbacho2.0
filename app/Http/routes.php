@@ -14,6 +14,8 @@
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
 Route::get('/app','HomeController@app');
+Route::resource('/partidos','PartidosController');
+Route::resource('/contactos','ContactosController');
 
 
 /*
