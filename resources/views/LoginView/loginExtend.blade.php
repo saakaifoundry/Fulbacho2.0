@@ -4,17 +4,21 @@
 <title> Login de usuarios</title>
 @stop
 
+
+
 @section('content')
 <h1>Iniciar Sesión</h1>
-<div>
-@if (count($errors) > 0)    
-    <label class='label label-danger'> 
+
+@if (count($errors) > 0)
+    <div class="error-notice">    
         @foreach ($errors->all() as $error)
-        {{ $error }}
-        @endforeach                                
-</label>
+            <div class="oaerror danger">
+               {{ $error }}
+            </div>
+            @endforeach                                
+    </div>
 @endif
-</div>
+
 
 {!!Form::open(array(
             "method" => "POST",
