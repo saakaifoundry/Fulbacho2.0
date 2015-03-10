@@ -20,8 +20,8 @@
 
 <div class= "form-group">
 {!!Form::label('Nombre')!!}
-{!!Form::input('text', 'user', Input::old('user'), array('class'=> 'form-control'))!!}
-<div class="bg-danger">{!!$errors->first('user')!!} </div>
+{!!Form::input('text', 'name', Input::old('name'), array('class'=> 'form-control'))!!}
+<div class="bg-danger">{!!$errors->first('name')!!} </div>
 </div>
 
 <div class= "form-group">
@@ -38,8 +38,8 @@
 
 <div class= "form-group">
 {!!Form::label('Repetir')!!}
-{!!Form::input('password', 'rep_password', null, array('class'=> 'form-control'))!!}
-<div class="bg-danger">{!!$errors->first('rep_password')!!} </div>
+{!!Form::input('password', 'password_confirmation', null, array('class'=> 'form-control'))!!}
+<div class="bg-danger">{!!$errors->first('password_confirmation')!!} </div>
 </div>
 {!!Form::input('hidden','registro')!!}
 {!!Form::input('hidden','_token',csrf_token())!!}
