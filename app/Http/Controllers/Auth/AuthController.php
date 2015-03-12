@@ -40,7 +40,7 @@ class AuthController extends Controller {
 
 //Override from trait AuthenticatesAndRegistersUsers
 		public function getRegister()
-	{
+	{	
 		return view('RegistroView.registrarse');
 	}
 
