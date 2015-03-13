@@ -14,10 +14,20 @@ class CreatePartidosUsersTable extends Migration {
 	{
 		Schema::create('partido_user', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('partido_id');
-            $table->integer('user_id');
+			$table->integer('partido_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
 			$table->timestamps();
+
+			$table->foreign('partido_id')
+				  ->references('id')
+				  ->on('partidos')
+				  ->onDelete('cascade');
+
+  			$table->foreign('user_id')
+				  ->references('id')
+				  ->on('users')
+				  ->onDelete('cascade');
+
 		});
 	}
 
