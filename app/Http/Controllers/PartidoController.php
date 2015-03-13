@@ -5,7 +5,11 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Partido;
+
 class PartidoController extends Controller {
+
+	protected $redirectTo = '/app';
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +18,8 @@ class PartidoController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$partidos = Partido::all();
+		return view ('App.Partido.partido')->with('partidos', $partidos);
 	}
 
 	/**
@@ -24,7 +29,7 @@ class PartidoController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view ('App.Partido.partidoCreate');
 	}
 
 	/**
@@ -34,7 +39,7 @@ class PartidoController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		
 	}
 
 	/**
@@ -45,7 +50,8 @@ class PartidoController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$partido = Partido::findOrFail($id);
+		return view ('App.Partido.partidoShow')->with('partido',$partido);
 	}
 
 	/**
