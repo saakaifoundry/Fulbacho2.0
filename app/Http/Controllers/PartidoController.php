@@ -3,7 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;
 
 use App\Partido;
 
@@ -39,7 +40,9 @@ class PartidoController extends Controller {
 	 */
 	public function store()
 	{
-		
+		$partido = Request::all();
+		Partido::create($partido); 
+		return redirect('partidos');
 	}
 
 	/**

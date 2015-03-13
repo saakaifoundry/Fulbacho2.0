@@ -48,9 +48,16 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-md-4 control-label">Precio</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="precio" value="{{ old('precio') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-md-4 control-label">Cantidad de jugadores</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="jugadores" value="{{ old('jugadores') }}">
+								<input type="text" class="form-control" name="cantJugadores" value="{{ old('cantJugadores') }}">
 							</div>
 						</div>
 
