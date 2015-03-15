@@ -21,8 +21,6 @@ class LoginController extends Controller {
     
     public function store(){
 
-return "pedro";
-
         $input = Request::all(); //trae todos los input del form
 
         $remember =  Request::get('remember');

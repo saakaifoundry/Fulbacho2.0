@@ -15,6 +15,7 @@ class CreatePartidosTable extends Migration {
 		Schema::create('partidos', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('sede_id')->unsigned()->index()->nullable();
 			$table->decimal('precio',5,2)->nullable();
             $table->integer('cantJugadores')->nullable();
             $table->boolean('confirmado')->default(0);

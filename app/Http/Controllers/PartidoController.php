@@ -2,11 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
-//use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
 
 use App\Partido;
+use App\Cancha;
 
 class PartidoController extends Controller {
 
@@ -38,10 +39,12 @@ class PartidoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		$partido = Request::all();
-		Partido::create($partido); 
+		$partido = Partido::create($request->all());
+		$partido->users()->attach(Auth::user()->id);
+		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first());
+		$partido->save();
 		return redirect('partidos');
 	}
 

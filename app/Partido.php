@@ -24,9 +24,12 @@ class Partido extends Model {
      //                               'partido_id', 'opcion_id');
    // }
     
-    //public function canchas() {
-     //   return $this->belongsToMany('Cancha', 'partidos_canchas',
-       //                             'partido_id', 'cancha_id');
-   // }
+    public function canchas() {
+      return $this->belongsToMany('App\Cancha');
+    }
+
+    public function sede(){
+      return $this->belongsTo('App\Cancha');
+    }
 
 }
