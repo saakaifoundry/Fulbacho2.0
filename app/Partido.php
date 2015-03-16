@@ -15,21 +15,23 @@ class Partido extends Model {
 	protected $fillable = array('precio', 'cantJugadores', 'confirmado');
 
 
-	public function users() {
-        return $this->belongsToMany('App\User');
-    }
+	public function jugadores() {
+      return $this->belongsToMany('App\User');
+  }
     
-    //public function opciones() {
+  public function canchas() {
+    return $this->belongsToMany('App\Cancha');
+  }
+
+  public function sede(){
+    return $this->belongsTo('App\Cancha');
+  }
+  
+  //public function opciones() {
      //   return $this->belongsToMany('Opcion', 'partidos_opciones',
      //                               'partido_id', 'opcion_id');
    // }
     
-    public function canchas() {
-      return $this->belongsToMany('App\Cancha');
-    }
 
-    public function sede(){
-      return $this->belongsTo('App\Cancha');
-    }
 
 }
