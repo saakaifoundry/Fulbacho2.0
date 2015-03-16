@@ -20,7 +20,7 @@ class PartidoController extends Controller {
 	 */
 	public function index()
 	{
-		$partidos = Partido::all();
+		$partidos = Auth::user()->partidos()->get();//trae los partidos del user logueado
 		return view ('App.Partido.partido')->with('partidos', $partidos);
 	}
 
@@ -42,8 +42,8 @@ class PartidoController extends Controller {
 	public function store(Request $request)
 	{
 		$partido = Partido::create($request->all());
-		$partido->users()->attach(Auth::user()->id);
-		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first());
+		$partido->jugadores()->attach(Auth::user()->id); //completa la tabla user_partido
+		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first()); //completa sede_id
 		$partido->save();
 		return redirect('partidos');
 	}
