@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Fecha</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="fecha" value="{{ old('fecha') }}">
+								<input type="date" class="form-control" name="fecha" value="{{ old('fecha') }}">
 							</div>
 						</div>
 
@@ -58,6 +58,18 @@
 							<label class="col-md-4 control-label">Cantidad de jugadores</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="cantJugadores" value="{{ old('cantJugadores') }}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Grupo</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="grupo" value="{{old('grupo')}}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Contacto</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="jugadores" value="{{old('jugadores')}}">
 							</div>
 						</div>
 
