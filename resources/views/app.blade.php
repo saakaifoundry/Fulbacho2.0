@@ -9,10 +9,9 @@
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  -->
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<link rel="stylesheet" href="/bootstrap/js/jquery-ui.css"> 
+	
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -63,16 +62,12 @@
 	</nav>
 
 	@yield('content')
+
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="/bootstrap/js/jquery.js"></script>
+	<script src="/bootstrap/js/jquery-ui.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> 
-
-
-<!--	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  --> 
 	@yield('script')
 </body>
 </html>
