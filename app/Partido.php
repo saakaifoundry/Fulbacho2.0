@@ -26,6 +26,10 @@ class Partido extends Model {
   public function sede(){
     return $this->belongsTo('App\Cancha');
   }
+
+  public function confirmados(){
+    return $this->belongsToMany('App\User')->where('confirmado',1);
+  }
   
   //public function opciones() {
      //   return $this->belongsToMany('Opcion', 'partidos_opciones',
