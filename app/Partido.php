@@ -28,7 +28,7 @@ class Partido extends Model {
   }
 
   public function confirmados(){
-    return $this->belongsToMany('App\User')->where('confirmado',1);
+    return $this->jugadores()->where('confirmado',1);
   }
   
   //public function opciones() {
