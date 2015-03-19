@@ -13,11 +13,9 @@
 	@foreach ($partidos as $partido)
 		<article>
 			<h3> <a href="{{ action('PartidoController@show',[$partido->id]) }}">{{$partido->id}}</a> Precio {!!$partido->precio!!} </h3> 
-			<h3> Cant jugadores 5/{!!$partido->cantJugadores!!} </h3> 
-			<h3> Confirmado? @if ($partido->confirmado == 1) Sí @else NO @endif </h3> 
-			<hr>
-			<hr>
-			<hr>
+			<h3> Cant jugadores {!!$partido->confirmados()->count()!!}/{!!$partido->cantJugadores!!} </h3> 
+			<h3> Partido Confirmado? @if ($partido->confirmado == 1) Sí @else NO @endif </h3> 
+
 		</article>	
 
 	@endforeach
