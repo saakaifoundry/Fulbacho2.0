@@ -26,7 +26,7 @@
 						</div>
 					@endif
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/partidos') }}">
-
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<!-- AUTOCOMPLETE DE CANCHAS. -->
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="cancha">Cancha</label>
@@ -34,13 +34,6 @@
 								<input type='text' id="canchas" class="form-control" name="cancha">
 							</div>
 					</div>
-					<div class="form-group">
-							<label class="col-md-4 control-label" for="cancha">Cancha id</label>
-							<div class="col-md-6">
-								<input type='text' id="canchaID" class="form-control" name="canchaId" value="{{ old('canchaId') }}">
-							</div>
-						</div>
-
 					<div class="form-group">
 							<label class="col-md-4 control-label">Fecha</label>
 							<div class="col-md-6">
