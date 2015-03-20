@@ -27,60 +27,8 @@
 					@endif
 
 					{!!Form::open(array("method" => "POST","action" => "PartidoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
-						<!-- AUTOCOMPLETE DE CANCHAS. -->
-						<div class="form-group">
-							{!!Form::label('Cancha','',array('class'=>'col-md-4 control-label')) !!}
-							<div class="col-md-6">
-							{!!Form::input('text','cancha','',array('id'=>'canchas','class'=>'form-control'))!!}
-							</div>
-						</div>
-						<div class="form-group">
-							{!!Form::label('Fecha','',array('class'=>'col-md-4 control-label')) !!}							
-							<div class="col-md-6">
-							{!!Form::input('date','fecha','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-
-						<div class="form-group">
-							{!!Form::label('Horario','',array('class'=>'col-md-4 control-label')) !!}
-							<div class="col-md-6">
-							{!!Form::input('text','horario','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-
-						<div class="form-group">
-							{!!Form::label('Precio','',array('class'=>'col-md-4 control-label')) !!}						
-							<div class="col-md-6">
-							{!!Form::input('text','precio','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-
-						<div class="form-group">
- 							{!!Form::label('Cantidad de Jugadores','',array('class'=>'col-md-4 control-label')) !!}
-							<div class="col-md-6">
-							{!!Form::input('text','cantJugadores','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-						<div class="form-group">
-							{!!Form::label('Grupo','',array('class'=>'col-md-4 control-label')) !!}						
-							<div class="col-md-6">
-							{!!Form::input('text','grupo','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-						<div class="form-group">
-							{!!Form::label('Contacto','',array('class'=>'col-md-4 control-label')) !!}						
-							<div class="col-md-6">
-							{!!Form::input('text','contacto','',array('class'=>'form-control'))!!}
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary form-control">
-									Crear
-								</button>
-							</div>
-						</div>
+						<!--Incluyo el formulario de creación-->
+						@include('App/Partido/partidoForm')
 					{!!Form::close()!!}
 				</div>
 			</div>
