@@ -32,6 +32,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	public function partidos() {
+       // return $this->belongsToMany('App\Partido')->orderBy('created_at','desc'); //por si se los quiere ordenados
         return $this->belongsToMany('App\Partido');
     }
 
