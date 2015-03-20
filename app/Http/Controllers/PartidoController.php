@@ -68,7 +68,8 @@ class PartidoController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$partido = Partido::findOrFail($id);
+		return view ('App.Partido.partidoEdit',compact('partido'));
 	}
 
 	/**
