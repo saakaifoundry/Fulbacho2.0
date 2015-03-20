@@ -25,52 +25,52 @@
 							</ul>
 						</div>
 					@endif
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/partidos') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<!-- AUTOCOMPLETE DE CANCHAS. -->
-					<div class="form-group">
-							<label class="col-md-4 control-label" for="cancha">Cancha</label>
+
+					{!!Form::open(array("method" => "POST","action" => "PartidoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
+						<!-- AUTOCOMPLETE DE CANCHAS. -->
+						<div class="form-group">
+							{!!Form::label('Cancha','',array('class'=>'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type='text' id="canchas" class="form-control" name="cancha">
+							{!!Form::input('text','cancha','',array('id'=>'canchas','class'=>'form-control'))!!}
 							</div>
-					</div>
-					<div class="form-group">
-							<label class="col-md-4 control-label">Fecha</label>
+						</div>
+						<div class="form-group">
+							{!!Form::label('Fecha','',array('class'=>'col-md-4 control-label')) !!}							
 							<div class="col-md-6">
-								<input type="date" class="form-control" name="fecha" value="{{ old('fecha') }}">
+							{!!Form::input('date','fecha','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Horario</label>
+							{!!Form::label('Horario','',array('class'=>'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="horario" value="{{ old('horario') }}">
+							{!!Form::input('text','horario','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Precio</label>
+							{!!Form::label('Precio','',array('class'=>'col-md-4 control-label')) !!}						
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="precio" value="{{ old('precio') }}">
+							{!!Form::input('text','precio','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Cantidad de jugadores</label>
+ 							{!!Form::label('Cantidad de Jugadores','',array('class'=>'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="cantJugadores" value="{{ old('cantJugadores') }}">
+							{!!Form::input('text','cantJugadores','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Grupo</label>
+							{!!Form::label('Grupo','',array('class'=>'col-md-4 control-label')) !!}						
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="grupo" value="{{old('grupo')}}">
+							{!!Form::input('text','grupo','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Contacto</label>
+							{!!Form::label('Contacto','',array('class'=>'col-md-4 control-label')) !!}						
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="jugadores" value="{{old('jugadores')}}">
+							{!!Form::input('text','contacto','',array('class'=>'form-control'))!!}
 							</div>
 						</div>
 
@@ -81,7 +81,7 @@
 								</button>
 							</div>
 						</div>
-					</form>
+					{!!Form::close()!!}
 				</div>
 			</div>
 		</div>
