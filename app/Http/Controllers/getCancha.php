@@ -18,19 +18,9 @@ class getCancha extends Controller {
 		$results = [];
 		foreach ($canchas as $sede) {
 			if(strpos((Str::lower($sede['nombre'])),(Str::lower($cancha))) !== false){
-				$results[] = $sede;
+				$results[] = $sede['nombre'];
 			}
 		}
-		return $results[0];
-
-		return [
-        "id"=>"1",
-        "nombre"=>"Serrano",
-        "direccion"=>"serrano 123",
-        "telefono"=>"1234567",
-        "created_at"=>"-0001-11-30 00:00:00",
-        "updated_at"=>"-0001-11-30 00:00:00"
-		];
-
+		return $results;
 	}
 }
