@@ -30,6 +30,10 @@ class Partido extends Model {
   public function confirmados(){
     return $this->jugadores()->where('confirmado',1);
   }
+
+  public function cancha(){
+      return $this->sede(); //->lists('nombre');
+  }
   
   //public function opciones() {
      //   return $this->belongsToMany('Opcion', 'partidos_opciones',
