@@ -32,7 +32,7 @@ class Partido extends Model {
   }
 
   public function cancha(){
-      return $this->sede(); //->lists('nombre');
+    return $this->sede();
   }
   
   //public function opciones() {
