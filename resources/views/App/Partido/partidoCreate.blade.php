@@ -15,20 +15,11 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Nuevo</div>
 				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
+					<!--Se incluyen los errores-->
+					@include('errors.errorShow')	
 					{!!Form::open(array("method" => "POST","action" => "PartidoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
 						<!--Incluyo el formulario de creación-->
-						@include('App/Partido/partidoForm')
+						@include('App/Partido/partidoForm', ['submitButtom' => 'Crear'])
 					{!!Form::close()!!}
 				</div>
 			</div>
@@ -40,17 +31,5 @@
 
 @stop
 
-
-@section('script')
-
-
-	<script>
-		$( "#canchas" ).autocomplete({
-			source: 'http://localhost:8888/getCancha',
-			minLength:1,
-
-		});
-
-</script>
-
-@stop
+<!--Se incluyen las canchas -->
+@include('App/Partido/canchasScript')

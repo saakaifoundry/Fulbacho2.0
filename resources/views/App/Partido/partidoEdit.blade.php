@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Nuevo</div>
+				<div class="panel-heading">Editar</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -22,11 +22,11 @@
 							</ul>
 						</div>
 					@endif
-				<!--	{!!$partido->cancha!!} -->
+					<!--{!!$partido->cancha->nombre!!} -->
 
 					{!!Form::model($partido,["method" => "PATCH","action" => ["PartidoController@update", $partido->id], 'class'=>'form-horizontal'])!!}
 						<!--Incluyo el formulario de edicion -->
-						@include('App/Partido/partidoForm')
+						@include('App/Partido/partidoForm', ['submitButtom' => 'Editar'])
 					{!!Form::close()!!}
 				</div>
 			</div>
@@ -38,17 +38,5 @@
 
 @stop
 
-
-@section('script')
-
-
-	<script>
-		$( "#canchas" ).autocomplete({
-			source: 'http://localhost:8888/getCancha',
-			minLength:1,
-
-		});
-
-</script>
-
-@stop
+<!--Se incluyen las canchas -->
+@include('App/Partido/canchasScript')

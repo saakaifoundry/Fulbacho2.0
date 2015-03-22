@@ -49,8 +49,6 @@
 
 <div class="form-group">
 	<div class="col-md-6 col-md-offset-4">
-		<button type="submit" class="btn btn-primary form-control">
-			Crear
-		</button>
+		{!!Form::submit($submitButtom, ['class'=>'btn btn-primary form-control'])!!}
 	</div>
 </div>
