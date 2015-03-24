@@ -39,4 +39,4 @@
 @stop
 
 <!--Se incluyen las canchas -->
-@include('App/Partido/canchasScript')
+@include('App/Partido/PartidoScript')
