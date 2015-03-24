@@ -6,6 +6,7 @@ use Auth;
 
 use App\Partido;
 use App\Cancha;
+use App\User;
 
 class PartidoController extends Controller {
 
@@ -18,6 +19,8 @@ class PartidoController extends Controller {
 	 */
 	public function index()
 	{
+//		dd(Auth::user()->contactos()->get()->toArray());
+//		dd(Auth::user()->contactos()->where('id',2)->get()->toArray());
 		$partidos = Auth::user()->partidos()->get();//trae los partidos del user logueado
 		return view ('App.Partido.partido')->with('partidos', $partidos);
 	}
@@ -39,10 +42,9 @@ class PartidoController extends Controller {
 	 */
 	public function store(PartidoRequest $request)
 	{
-
 		$partido = Partido::create($request->all());
-		$partido->jugadores()->attach(Auth::user()->id); //completa la tabla user_partido
-		$this->saveSede($partido, $request); //completa sede_id
+		$this->saveContactos($partido, $request->contactos); //completa la tabla user_partido
+		$this->saveSede($partido, $request->cancha); //completa sede_id
 		return redirect('partidos'); 
 	}
 
@@ -80,7 +82,7 @@ class PartidoController extends Controller {
 	{
 		$partido = Partido::findOrFail($id);
 		$partido->update($request->all());
-		$this->saveSede($partido, $request);//completa sede_id
+		$this->saveSede($partido, $request->cancha);//completa sede_id
 		return redirect('partidos');
 	}
 
@@ -97,9 +99,28 @@ class PartidoController extends Controller {
 
 
 	//TODO: buscar otra forma de hacer esto.
-	private function saveSede($partido,$request){
-		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first()); //completa sede_id
-		$partido->save();
+	private function saveSede($partido,$cancha){
+			$partido->sede()->associate(Cancha::where('nombre',$cancha)->first()); //completa sede_id
+			$partido->save();
 	}
 
+	/*
+	*Se completa la relación partido_user
+	*/
+	private function saveContactos($partido, $contactosRequest){
+		$contactos = [];
+		$userLogueado = Auth::user();
+		
+		$contactos[]=$userLogueado->id; //se agrega al usuario que crea el partido
+		
+		//Se agregan a los contactos invitados
+		foreach ($contactosRequest as $unContacto) {
+			$contacto = $userLogueado->contactos()->where('name',$unContacto)->get()->first();
+			if($contacto != null){
+				$contactos[] = $contacto->id;
+			}
+		}
+
+		$partido->jugadores()->attach($contactos); //guarda en la tabla partido_user
+	}
 }
