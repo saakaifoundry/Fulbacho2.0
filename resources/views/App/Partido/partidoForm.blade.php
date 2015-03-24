@@ -8,7 +8,7 @@
 <div class="form-group">
 	{!!Form::label('Fecha','',array('class'=>'col-md-4 control-label')) !!}
 	<div class="col-md-6">
-		{!!Form::input('date','fecha',date('Y-m-d'),array('class'=>'form-control'))!!}
+		{!!Form::input('date','fecha',date('d-m-y'),array('class'=>'form-control'))!!}
 	</div>
 </div>
 
