@@ -1,10 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\PartidoRequest;
 use App\Http\Controllers\Controller;
 use Auth;
-
-use Illuminate\Http\Request;
 
 use App\Partido;
 use App\Cancha;
@@ -39,13 +37,13 @@ class PartidoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(PartidoRequest $request)
 	{
+
 		$partido = Partido::create($request->all());
 		$partido->jugadores()->attach(Auth::user()->id); //completa la tabla user_partido
-		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first()); //completa sede_id
-		$partido->save();
-		return redirect('partidos');
+		$this->saveSede($partido, $request); //completa sede_id
+		return redirect('partidos'); 
 	}
 
 	/**
@@ -78,9 +76,12 @@ class PartidoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, PartidoRequest $request)
 	{
-		//
+		$partido = Partido::findOrFail($id);
+		$partido->update($request->all());
+		$this->saveSede($partido, $request);//completa sede_id
+		return redirect('partidos');
 	}
 
 	/**
@@ -92,6 +93,13 @@ class PartidoController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+
+	//TODO: buscar otra forma de hacer esto.
+	private function saveSede($partido,$request){
+		$partido->sede()->associate(Cancha::where('nombre',$request->input('cancha'))->first()); //completa sede_id
+		$partido->save();
 	}
 
 }
