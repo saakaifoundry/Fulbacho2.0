@@ -43,7 +43,7 @@
 <div class="form-group">
 	{!!Form::label('Contacto','',array('class'=>'col-md-4 control-label')) !!}		
 	<div id="dynamicInput" class="col-md-6">
-		{!!Form::text('contactos[]',null,array('class'=>'form-control'))!!}
+		{!!Form::text('contactos[]',null,array('id'=>'contacto', 'class'=>'form-control'))!!}
 	</div>
 	<input type="button" value="+" onClick="addInput('dynamicInput');">
 </div>
