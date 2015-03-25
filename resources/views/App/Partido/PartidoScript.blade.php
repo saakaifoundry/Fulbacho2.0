@@ -11,6 +11,14 @@
 </script>
 
 <script>
+		$( "#contacto" ).autocomplete({
+			source: 'http://localhost:8888/getContactos',
+			minLength:1,
+
+		});
+</script>
+
+<script>
 var counter = 1;
 var limit = 3;
 
@@ -27,7 +35,7 @@ function addInput(divName){
 		
 		var id = '#' + idName;
 		$( id ).autocomplete({
-			source: 'http://localhost:8888/getCancha',
+			source: 'http://localhost:8888/getContactos',
 			minLength:1,
 		});
 	counter++;
