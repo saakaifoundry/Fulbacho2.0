@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ContactoController extends Controller {
 
@@ -14,7 +15,9 @@ class ContactoController extends Controller {
 	 */
 	public function index()
 	{
-		//
+
+		$contactos = Auth::user()->contactos()->get();
+		return view ('App.Contacto.contactoShow')->with('contactos', $contactos);
 	}
 
 	/**
@@ -24,7 +27,7 @@ class ContactoController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('App.Contacto.contactoCreate');
 	}
 
 	/**
@@ -56,7 +59,7 @@ class ContactoController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		return view('App.Contacto.contactoEdit');
 	}
 
 	/**
