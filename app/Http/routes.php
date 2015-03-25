@@ -12,11 +12,12 @@
 */
 
 Route::get('getCancha','getCancha@getCancha');
+Route::get('getContactos','getContactos@getContactos');
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
 Route::get('/app','HomeController@app');
 Route::resource('/partidos','PartidoController');
-Route::resource('/contactos','ContactosController');
+Route::resource('/contactos','ContactoController');
 
 
 /*
