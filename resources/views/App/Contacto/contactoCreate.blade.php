@@ -3,12 +3,36 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="mySmallModalLabel">Ooops!!!</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">Contacto Nuevo</h4>
                 </div>
                 <div class="modal-body">
-                    <p>I am being lazy and do not want to program an "Add User" section into this snippet... So it looks like you'll have to do that for yourself.</p><br/>
-                    <p><strong>Sorry<br/>
-                    ~ Mouse0270</strong></p>
+                    {!!Form::open(array("method" => "POST","action" => "ContactoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nombre</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Teléfono</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                {!!Form::submit('Crear', ['class'=>'btn btn-primary form-control'])!!}
+                            </div>
+                        </div>
+
+                    {!!Form::close()!!}
                 </div>
             </div>
         </div>
