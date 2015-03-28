@@ -12,6 +12,10 @@ class PartidoController extends Controller {
 
 	protected $redirectTo = '/app';
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *

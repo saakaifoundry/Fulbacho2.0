@@ -9,6 +9,10 @@ use Illuminate\Support\Str;
 
 class getCancha extends Controller {
 
+	public function __construct(){
+        $this->middleware('auth');
+    }
+
 //TODO: mejorar para que devuelva id/valor.  https://www.youtube.com/watch?v=pLBtduvx5b0
 //Así cuando se crea el partido se tiene el id y no hay que ir a buscarlo.
 	public function getCancha(Request $request){
