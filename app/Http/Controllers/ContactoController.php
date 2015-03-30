@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Contacto;
+use App\User;
 
 class ContactoController extends Controller {
 
@@ -19,9 +21,7 @@ class ContactoController extends Controller {
 	 */
 	public function index()
 	{
-
-		$contactos = Auth::user()->contactos()->get();
-		return view ('App.Contacto.contactoShow')->with('contactos', $contactos);
+		return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
 	}
 
 	/**
@@ -39,9 +39,18 @@ class ContactoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $requests)
 	{
-		//
+		$input = $requests->all(); //trae todos los input del form
+		$contacto = User::where('email',$input['email'])->firstOrFail(); //todo: exceptions
+        $user = Auth::user(); 
+        if($contacto != null){
+            $user->contactos()->attach($contacto->id);
+            return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
+        }
+        else {
+        	return view ('/home');
+            }
 	}
 
 	/**
@@ -86,6 +95,10 @@ class ContactoController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	private function getContactos(){
+		return Auth::user()->contactos()->get();
 	}
 
 }
