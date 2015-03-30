@@ -17,13 +17,13 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Nombre</label>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="text" class="form-control" name="nombre" value="{{ old('email') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Teléfono</label>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="text" class="form-control" name="telefono" value="{{ old('email') }}">
                             </div>
                         </div>
                         <div class="form-group">
