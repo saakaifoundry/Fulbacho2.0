@@ -6,6 +6,9 @@
                     <h4 class="modal-title" id="mySmallModalLabel">Contacto Nuevo</h4>
                 </div>
                 <div class="modal-body">
+                <div class="alert alert-success">
+                <p>Completá alguno de los campos para buscar un contacto </p>
+                 </div>
                     {!!Form::open(array("method" => "POST","action" => "ContactoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
 
                         <div class="form-group">
