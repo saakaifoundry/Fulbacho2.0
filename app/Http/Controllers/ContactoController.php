@@ -44,6 +44,7 @@ class ContactoController extends Controller {
 		$input = $requests->all(); //trae todos los input del form
 		$contacto = User::where('email',$input['email'])->firstOrFail(); //todo: exceptions
         $user = Auth::user(); 
+        //TODO: validar que no agregue a un contacto ya existente
         if($contacto != null){
             $user->contactos()->attach($contacto->id);
             return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
