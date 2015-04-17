@@ -20,7 +20,7 @@
 	        @if($jugador->id%2==0)
 		        <li class="list-group-item list-group-item-success"><span class="badge glyphicon glyphicon-remove-circle"> </span> {!!$jugador->name !!}</li>
     		@else
-		        <li class="list-group-item list-group-item-warning"><span class="badge glyphicon glyphicon-ok-circle"> </span>{!!$jugador->name !!}</li>
+		        <li class="list-group-item list-group-item-warning"><span class="badge glyphicon glyphicon-ok-circle"></span>  {!!$jugador->name !!}</li>
     		@endif
 		@endforeach
     </ul>
