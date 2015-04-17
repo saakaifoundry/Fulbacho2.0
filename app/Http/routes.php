@@ -18,6 +18,7 @@ Route::get('home','HomeController@index');
 Route::get('/app','HomeController@app');
 Route::resource('/partidos','PartidoController');
 Route::resource('/contactos','ContactoController');
+Route::resource('/configuracion','ConfiguracionController');
 
 
 /*
