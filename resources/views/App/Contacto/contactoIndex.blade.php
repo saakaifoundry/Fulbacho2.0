@@ -32,7 +32,7 @@
                 	@foreach ($contactos as $contacto)
 						<li class="list-group-item">
     	                    <div class="col-xs-12 col-sm-3">
-                        	    <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="{{ $contacto->name }}" class="img-responsive img-circle" />
+                        	    <img src="/images/{{$contacto->image}}" alt="{{ $contacto->name }}" class="img-responsive img-circle" />
                         	</div>
                         	<div class="col-xs-12 col-sm-9">
                             <span class="name"> {{ $contacto->name }} </span><br/>
