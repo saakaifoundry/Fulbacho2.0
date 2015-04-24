@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
+use DB;
 use Auth;
 class ConfiguracionController extends Controller {
 
@@ -15,7 +15,8 @@ class ConfiguracionController extends Controller {
 	 */
 	public function index()
 	{
-		return view('App.Configuracion.configuracionIndex');
+		//le paso la ruta en dónde se encuentra su imagen. ¿y el dominio? cuak!!
+		return view('App.Configuracion.configuracionIndex')->with('image', 'images/'. Auth::user()->image);
 	}
 
 	/**
@@ -35,7 +36,16 @@ class ConfiguracionController extends Controller {
 	 */
 	public function store(Request $request)
 	{	
-		dd($this->guardarImagen($request->file('image')));
+		$userLogueado = Auth::user();
+
+		$userLogueado->name = $request->name;
+
+		if($request->hasFile('image')){ 	
+			$userLogueado->image = $this->guardarImagen($request->file('image'));
+		}
+
+		$userLogueado->save();
+		return "llegamos";
 	}
 
 	/**
@@ -89,7 +99,7 @@ class ConfiguracionController extends Controller {
         $fileName = Auth::user()->name. rand(11111,99999).'.'.$extension; // se renombra con un nombre aleatorio
   		$file->move($destinationPath,$fileName); //se traslada al lugar elegido
   		
-  		return $destinationPath.'/'.$fileName;
+  		return $fileName;
 	}
 
 }
