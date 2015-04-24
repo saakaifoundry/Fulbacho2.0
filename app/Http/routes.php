@@ -19,6 +19,7 @@ Route::get('/app','HomeController@app');
 Route::resource('/partidos','PartidoController');
 Route::resource('/contactos','ContactoController');
 Route::resource('/configuracion','ConfiguracionController');
+Route::resource('/torneos','TorneoController');
 
 
 /*
