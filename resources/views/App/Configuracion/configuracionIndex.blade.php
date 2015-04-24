@@ -7,13 +7,27 @@
 
 @section('content')
 
-<h3>{!!Auth::user()->name!!}, acá podes realizar todas las configuraciones del sistema :)</h3>
 
+<h3>{!!Auth::user()->name!!}, acá podes realizar todas las configuraciones del sistema :)</h3>
 
 {!!Form::open(array("method"=>"POST","action"=>"ConfiguracionController@store","role"=> "form", 'class'=>'form-horizontal','files'=> true))!!}
 	    
+
+	<div class="form-group">
+		<label class="col-md-4 control-label">Name</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-4 control-label">E-Mail Address</label>
+		<div class="col-md-6">
+			<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+		</div>
+	</div>
     <div class="form-group">
-        {!! Form::label('image', 'Your Image',array('class'=>'col-md-4 control-label'))  !!}
+        {!! Form::label('image', 'Imagen',array('class'=>'col-md-4 control-label'))  !!}
         <div class="col-md-6">
         	{!! Form::file('image') !!}
         </div>
