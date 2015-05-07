@@ -42,15 +42,15 @@ class ContactoController extends Controller {
 	public function store(Request $requests)
 	{
 		$input = $requests->all(); //trae todos los input del form
-		$contacto = User::where('email',$input['email'])->firstOrFail(); //todo: exceptions
         $user = Auth::user(); 
-        //TODO: validar que no agregue a un contacto ya existente
-        if($contacto != null){
+		$contacto = $user->where('email',$input['email'])->firstOrFail(); //todo: exceptions
+		        
+        if($contacto != null and !$user->contactos()->where('contacto_id',$contacto->id)){
             $user->contactos()->attach($contacto->id);
             return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
         }
         else {
-        	return view ('/home');
+        	return redirect('/contactos')->with("modal_message_error", "You must be logged in to view this page.");
             }
 	}
 
