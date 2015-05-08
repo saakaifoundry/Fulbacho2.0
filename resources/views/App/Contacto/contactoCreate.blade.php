@@ -9,11 +9,6 @@
                 <div class="alert alert-success">
                     <p>Completá alguno de los campos para buscar un contacto </p>
                  </div>
-                 @if( Session::has('modal_message_error'))
-                     <div class="alert alert-danger">
-                        <p>Contacto ya agregado</p>
-                     </div>
-                @endif
                     {!!Form::open(array("method" => "POST","action" => "ContactoController@store","role" => "form", 'class'=>'form-horizontal'))!!}
 
                         <div class="form-group">
