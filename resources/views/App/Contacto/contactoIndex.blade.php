@@ -7,25 +7,6 @@
 
 @section('content')
 
-
-
-    <div id="popupmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Notification: Please read</h3>
-        </div>
-        <div class="modal-body">
-            <p>
-                sdsdfsdgdfghdfg
-            </p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
-    </div>
-
-
-
 <div class="row">
         <div class="col-xs-12 col-sm-offset-3 col-sm-6">
             <div class="panel panel-default">
@@ -49,7 +30,7 @@
                 </div>
                 
                 <ul class="list-group" id="contact-list">
-                <!--	@foreach ($contactos as $contacto)
+                	@foreach ($contactos as $contacto)
 						<li class="list-group-item">
     	                    <div class="col-xs-12 col-sm-3">
                         	    <img src="/images/{{$contacto->image}}" alt="{{ $contacto->name }}" class="img-responsive img-circle" />
@@ -61,7 +42,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </li>
-					@endforeach-->
+					@endforeach
                 </ul>
             </div>
         </div>
