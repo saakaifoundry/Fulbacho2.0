@@ -4,7 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use DB;
 use Auth;
 class ConfiguracionController extends Controller {
 
@@ -36,16 +35,9 @@ class ConfiguracionController extends Controller {
 	 */
 	public function store(Request $request)
 	{	
-		$userLogueado = Auth::user();
 
-		$userLogueado->name = $request->name;
-
-		if($request->hasFile('image')){ 	
-			$userLogueado->image = $this->guardarImagen($request->file('image'));
-		}
-
-		$userLogueado->save();
-		return "llegamos";
+		$this->actualizarDatos($request);
+		return $this->index();
 	}
 
 	/**
@@ -100,6 +92,25 @@ class ConfiguracionController extends Controller {
   		$file->move($destinationPath,$fileName); //se traslada al lugar elegido
   		
   		return $fileName;
+	}
+
+	private function actualizarDatos($request){
+
+		$userLogueado = Auth::user();
+
+		if($request->has('name')){
+			$userLogueado->name = $request->name;
+		}
+
+		if($request->has('email')){
+			$userLogueado->email = $request->email;
+		}
+
+		if($request->hasFile('image')){ 	
+			$userLogueado->image = $this->guardarImagen($request->file('image'));
+		}
+
+		$userLogueado->save();
 	}
 
 }

@@ -11,7 +11,7 @@
 <h3>{!!Auth::user()->name!!}, acá podes realizar todas las configuraciones del sistema :)</h3>
 
 {!!Form::open(array("method"=>"POST","action"=>"ConfiguracionController@store","role"=> "form", 'class'=>'form-horizontal','files'=> true))!!}
-	    
+	    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
 	<div class="form-group">
 		<label class="col-md-4 control-label">Name</label>
