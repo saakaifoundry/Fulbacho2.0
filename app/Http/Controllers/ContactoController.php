@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Contacto;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ContactoController extends Controller {
 
@@ -42,18 +43,22 @@ class ContactoController extends Controller {
 	public function store(Request $requests)
 	{
 		$input = $requests->all(); //trae todos los input del form
-        $user = Auth::user(); 
-		$contacto = $user->where('email',$input['email'])->firstOrFail(); //todo: exceptions
-		        
+        $user = Auth::user();
+
+        try{ 
+			$contacto = $user->where('email',$input['email'])->firstOrFail(); //todo: exceptions
+		}
+		//Si no equiste el contacto throw exceptions
+    	catch (ModelNotFoundException $e){
+    		return 'No existe el usuario';
+    	}
+
         if($contacto != null and !$user->contactos()->where('contacto_id',$contacto->id)){
             $user->contactos()->attach($contacto->id);
-            return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
         }
-        else {
-        	return redirect('/contactos')->with("modal_message_error", "You must be logged in to view this page.");
-            }
-	}
 
+        return view ('App.Contacto.contactoIndex')->with('contactos', $this->getContactos());
+    }
 	/**
 	 * Display the specified resource.
 	 *
@@ -98,6 +103,8 @@ class ContactoController extends Controller {
 		//
 	}
 
+	//devuelve los contactos
+	//Todo: sacar de acá
 	private function getContactos(){
 		return Auth::user()->contactos()->get();
 	}
