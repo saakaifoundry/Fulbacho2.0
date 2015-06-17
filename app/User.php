@@ -37,7 +37,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function contactos(){
-    	return $this->belongsToMany('App\User', 'contacto_user', 'contacto_id');
+    	return $this->belongsToMany('App\User', 'contacto_user', 'user_id','contacto_id');
+    }
+
+    public function getContactos(){
+    	return $this->hasManyThrough('App\Contacto', 'App\User', 'contacto_id','user_id');
     }
 
 }
