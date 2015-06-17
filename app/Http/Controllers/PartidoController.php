@@ -101,7 +101,11 @@ class PartidoController extends Controller {
 		//
 	}
 
+	public function saveConfirmar(PartidoRequest $request){
+		return 'pepe';
+	}
 
+	
 	//TODO: buscar otra forma de hacer esto.
 	private function saveSede($partido,$cancha){
 			$partido->sede()->associate(Cancha::where('nombre',$cancha)->first()); //completa sede_id
