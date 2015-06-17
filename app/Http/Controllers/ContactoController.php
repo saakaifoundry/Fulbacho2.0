@@ -52,8 +52,7 @@ class ContactoController extends Controller {
     	catch (ModelNotFoundException $e){
     		return 'No existe el usuario';
     	}
-
-        if($contacto != null and !$user->contactos()->where('contacto_id',$contacto->id)){
+        if($contacto != null and ($user->contactos()->where('contacto_id',$contacto->id)->first() == null)){
             $user->contactos()->attach($contacto->id);
         }
 
