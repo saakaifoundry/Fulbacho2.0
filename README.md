@@ -1,5 +1,5 @@
 <h1> Lo siguiente es de laravel4.2 actualizar </h1>
-
+aca hay conflictos
 <h1>Login PHP(+ blade) + Laravel</h1>
 
 Para desarrollar en esta aplicación, es necesario tener instalado el FW Laravel. 
