@@ -1,9 +1,8 @@
 <h1> Lo siguiente es de laravel4.2 actualizar </h1>
-<<<<<<< HEAD
 aca hay conflictos
-=======
+
 probando merge
->>>>>>> 9f817091749a293d273bc4373a27d03b23cacf2f
+
 <h1>Login PHP(+ blade) + Laravel</h1>
 
 Para desarrollar en esta aplicación, es necesario tener instalado el FW Laravel. 
