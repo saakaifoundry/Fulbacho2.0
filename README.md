@@ -1,7 +1,4 @@
 <h1> Lo siguiente es de laravel4.2 actualizar </h1>
-aca hay conflictos
-
-probando merge
 
 <h1>Login PHP(+ blade) + Laravel</h1>
 
