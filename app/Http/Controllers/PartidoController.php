@@ -7,6 +7,8 @@ use Auth;
 use App\Partido;
 use App\Cancha;
 use App\User;
+use Request;
+use Input;
 
 class PartidoController extends Controller {
 
@@ -36,6 +38,7 @@ class PartidoController extends Controller {
 	 */
 	public function create()
 	{
+			dd("ppe");	
 		return view ('App.Partido.partidoCreate');
 	}
 
@@ -46,6 +49,7 @@ class PartidoController extends Controller {
 	 */
 	public function store(PartidoRequest $request)
 	{
+			dd("ppe");
 		$partido = Partido::create($request->all());
 		$this->saveContactos($partido, $request->contactos); //completa la tabla user_partido
 		$this->saveSede($partido, $request->cancha); //completa sede_id
@@ -102,7 +106,11 @@ class PartidoController extends Controller {
 	}
 
 	public function saveConfirmar(PartidoRequest $request){
-		return 'pepe';
+		if(Request::ajax()) {
+			$data = Input::all();
+			$arrayName = array('name'=>'federico','last'=>'derico');
+      		print_r($arrayName);
+    	}
 	}
 
 	

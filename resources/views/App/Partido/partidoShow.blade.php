@@ -10,24 +10,26 @@
     	<p>Acá podés ver toda la información del partido.</p>
     	<p>Confirmar tu asistencia y ver la de tus amigos</p>
 	</div>
-   <div class="funkyradio">
-        <div class="funkyradio-success">
-            <input type="radio" name="radio" id="radio3" />
-            <label for="radio3">Asistir</label>
-        </div>
+    {!!Form::open(array('url'=>'partidos/confirmar','method'=>'POST'))!!}
+       <div class="funkyradio">
+            <div class="funkyradio-success">
+                <input type="radio" name="radio" id="asistirCheck" />
+                <label for="radio3">Asistir</label>
+            </div>
 
-        <div class="funkyradio-danger">
-            <input type="radio" name="radio" id="radio4" />
-            <label for="radio4">No asistir</label>
-        </div>			
-    </div>
+            <div class="funkyradio-danger">
+                <input type="radio" name="radio" id="noAsistirCheck" />
+                <label for="radio4">No asistir</label>
+            </div>			
+        </div>
+    {!!Form::close() !!}
     <div class="form-group">
-    {!!Form::open(array("method" => "POST","action" => "PartidoController@saveConfirmar","role" => "form", 'class'=>'form-horizontal'))!!}
+<!--    {!!Form::open(array("method" => "POST","action" => "PartidoController@saveConfirmar","role" => "form", 'class'=>'form-horizontal'))!!}
         <div class="col-md-6 col-md-offset-2">
             {!!Form::submit('Guardar', ['class'=>'btn btn-primary form-control'])!!}
         </div>
-    {!!Form::close()!!}
-</div>
+    
+</div>-->   
 
 	<p>	El partido se juega en: {!!$partido->sede->nombre!!} </p>
 
@@ -43,3 +45,6 @@
 
 
 @stop
+
+
+@include('App/Partido/PartidoShowScript')

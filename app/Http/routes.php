@@ -16,7 +16,10 @@ Route::get('getContactos','getContactos@getContactos');
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
 Route::get('/app','HomeController@app');
-Route::post('partidos','PartidoController@saveConfirmar');
+Route::get('partidos/confirmar', function() {
+  return "View::make('login')";
+});
+Route::post('partidos/confirmar','PartidoController@saveConfirmar');
 Route::resource('partidos','PartidoController');
 Route::resource('/contactos','ContactoController');
 Route::resource('/configuracion','ConfiguracionController');
