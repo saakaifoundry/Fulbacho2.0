@@ -60,3 +60,7 @@ Listo
 4)<strong> $sudo nano default</strong> <br>
 5)<strong> Modificar AllowOverride a All (en la sección /var/www o donde coloques los proyectos php)</strong><br>
 6)<strong>$sudo service apache2 restart</strong> <br>
+
+
+
+git config core.filemode false para que no se vea como cambio los archivos modificados debido a un cambio de permiso de escritura y lectura en linux.
