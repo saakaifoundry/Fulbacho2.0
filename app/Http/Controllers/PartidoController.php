@@ -107,12 +107,27 @@ class PartidoController extends Controller {
 
 	public function saveConfirmar(PartidoRequest $request){
 		if(Request::ajax()) {
-			$data = Input::all();
-			$arrayName = array('name'=>'federico','last'=>'derico');
-      		print_r($arrayName);
+
+			$respuesta = $request->input('respuesta');
+			$requestPartido = $request->input('partido');
+			$partido = Partido::findOrFail($requestPartido);
+			$confirmado = ['confirmado' => '0'];
+
+			if($respuesta == 'si'){
+				$confirmado['confirmado']='1'; 
+			}
+			//Actualizo el partido_user con 1 ó 0
+			//try catch?
+			$user = Auth::user();
+			$user->partidos()->sync([$partido->id =>$confirmado]);
+			$cantConfirmados = $partido->confirmados()->count();
+			$cantNoConfirmados = $partido->noConfirmados()->count(); 
+
+			$return = ['confirmados'=>$cantConfirmados, 'noConfirmados'=>$cantNoConfirmados, 'user'=>$user->id];
+
+      		return response()->json($return);
     	}
 	}
-
 	
 	//TODO: buscar otra forma de hacer esto.
 	private function saveSede($partido,$cancha){

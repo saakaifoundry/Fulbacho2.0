@@ -30,6 +30,9 @@ class Partido extends Model {
   public function confirmados(){
     return $this->jugadores()->where('confirmado',1);
   }
+  public function noConfirmados(){
+    return $this->jugadores()->where('confirmado',0);
+  }
 
   public function cancha(){
     return $this->sede();
