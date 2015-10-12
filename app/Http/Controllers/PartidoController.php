@@ -38,7 +38,6 @@ class PartidoController extends Controller {
 	 */
 	public function create()
 	{
-			dd("ppe");	
 		return view ('App.Partido.partidoCreate');
 	}
 
@@ -49,7 +48,6 @@ class PartidoController extends Controller {
 	 */
 	public function store(PartidoRequest $request)
 	{
-			dd("ppe");
 		$partido = Partido::create($request->all());
 		$this->saveContactos($partido, $request->contactos); //completa la tabla user_partido
 		$this->saveSede($partido, $request->cancha); //completa sede_id
