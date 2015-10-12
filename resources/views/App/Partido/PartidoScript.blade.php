@@ -4,7 +4,7 @@
 <!--TODO: se repite código-->
 <script>
 		$( "#canchas" ).autocomplete({
-			source: 'http://localhost:8888/getCancha',
+			source: '/getCancha',
 			minLength:1,
 
 		});
@@ -12,7 +12,7 @@
 
 <script>
 		$( "#contacto" ).autocomplete({
-			source: 'http://localhost:8888/getContactos',
+			source: '/getContactos',
 			minLength:1,
 
 		});
@@ -35,7 +35,7 @@ function addInput(divName){
 		
 		var id = '#' + idName;
 		$( id ).autocomplete({
-			source: 'http://localhost:8888/getContactos',
+			source: '/getContactos',
 			minLength:1,
 		});
 	counter++;
