@@ -25,8 +25,6 @@ class PartidoController extends Controller {
 	 */
 	public function index()
 	{
-//		dd(Auth::user()->contactos()->get()->toArray());
-//		dd(Auth::user()->contactos()->where('id',2)->get()->toArray());
 		$partidos = Auth::user()->partidos()->get();//trae los partidos del user logueado
 		return view ('App.Partido.partido')->with('partidos', $partidos);
 	}
@@ -49,8 +47,8 @@ class PartidoController extends Controller {
 	public function store(PartidoRequest $request)
 	{
 		$partido = Partido::create($request->all());
-		$this->saveContactos($partido, $request->contactos); //completa la tabla user_partido
-		$this->saveSede($partido, $request->cancha); //completa sede_id
+		$this->saveContactos($partido, $request->contactoId); //completa la tabla user_partido.
+		$this->saveSede($partido, $request->canchaId); //completa sede_id
 		return redirect('partidos'); 
 	}
 
@@ -107,17 +105,17 @@ class PartidoController extends Controller {
 		if(Request::ajax()) {
 
 			$respuesta = $request->input('respuesta');
-			$requestPartido = $request->input('partido');
+			$requestPartido = $request->input('partidoId');
 			$partido = Partido::findOrFail($requestPartido);
 			$confirmado = ['confirmado' => '0'];
 
 			if($respuesta == 'si'){
 				$confirmado['confirmado']='1'; 
 			}
-			//Actualizo el partido_user con 1 ó 0
-			//try catch?
-			$user = Auth::user();
-			$user->partidos()->sync([$partido->id =>$confirmado]);
+			//Actualizo el partido_user con confirmado 1 ó 0
+			$user = Auth::user();-
+			$user->partidos()->updateExistingPivot($partido->id, $confirmado);
+
 			$cantConfirmados = $partido->confirmados()->count();
 			$cantNoConfirmados = $partido->noConfirmados()->count(); 
 
@@ -127,9 +125,8 @@ class PartidoController extends Controller {
     	}
 	}
 	
-	//TODO: buscar otra forma de hacer esto.
 	private function saveSede($partido,$cancha){
-			$partido->sede()->associate(Cancha::where('nombre',$cancha)->first()); //completa sede_id
+			$partido->sede()->associate(Cancha::where('id',$cancha)->first()); //completa sede_id
 			$partido->save();
 	}
 
@@ -141,10 +138,10 @@ class PartidoController extends Controller {
 		$userLogueado = Auth::user();
 		
 		$contactos[]=$userLogueado->id; //se agrega al usuario que crea el partido
-		
+		$contactosUnique = array_unique($contactosRequest); //se sacan los repetidos
 		//Se agregan a los contactos invitados
-		foreach ($contactosRequest as $unContacto) {
-			$contacto = $userLogueado->contactos()->where('name',$unContacto)->get()->first();
+		foreach ($contactosUnique as $unContactoId) {
+			$contacto = $userLogueado->contactos()->where('id',$unContactoId)->get()->first();
 			if($contacto != null){
 				$contactos[] = $contacto->id;
 			}

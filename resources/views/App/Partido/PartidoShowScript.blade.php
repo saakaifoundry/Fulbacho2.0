@@ -23,7 +23,7 @@ function ajaxAsistencia (respuesta,id){
 	        $.ajax({
 	            method: "POST",
 	            url: "confirmar",
-	            data: { respuesta: respuesta,partido: id, '_token': $('input[name=_token]').val() },
+	            data: { respuesta: respuesta,partidoId: id, '_token': $('input[name=_token]').val() },
 	            success: function(retorno)
 	            {
                 	actualizarConfirmados(retorno, respuesta);

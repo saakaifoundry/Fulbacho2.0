@@ -13,8 +13,6 @@ class getCancha extends Controller {
         $this->middleware('auth');
     }
 
-//TODO: mejorar para que devuelva id/valor.  https://www.youtube.com/watch?v=pLBtduvx5b0
-//Así cuando se crea el partido se tiene el id y no hay que ir a buscarlo.
 	public function getCancha(Request $request){
 
 		$cancha = $request->input('term');
@@ -22,7 +20,7 @@ class getCancha extends Controller {
 		$results = [];
 		foreach ($canchas as $sede) {
 			if(strpos((Str::lower($sede['nombre'])),(Str::lower($cancha))) !== false){
-				$results[] = $sede['nombre'];
+				$results[] = ['value'=>$sede['nombre'], 'id'=>$sede['id']];
 			}
 		}
 		return $results;

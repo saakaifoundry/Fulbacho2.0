@@ -2,6 +2,7 @@
 	{!!Form::label('Cancha','',array('class'=>'col-md-4 control-label')) !!}
 	<div class="col-md-6">
 		{!!Form::text('cancha',null,array('id'=>'canchas','class'=>'form-control'))!!}
+		{!!Form::hidden('canchaId',null,array('id'=>'canchaId'))!!}
 	</div>	
 </div>
 
@@ -44,6 +45,7 @@
 	{!!Form::label('Contacto','',array('class'=>'col-md-4 control-label')) !!}		
 	<div id="dynamicInput" class="col-md-6">
 		{!!Form::text('contactos[]',null,array('id'=>'contacto', 'class'=>'form-control'))!!}
+		{!!Form::hidden('contactoId[]',null,array('id'=>'contactoId'))!!}
 	</div>
 	<input type="button" value="+" onClick="addInput('dynamicInput');">
 </div>
